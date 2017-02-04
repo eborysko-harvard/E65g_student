@@ -1,5 +1,5 @@
 //
-//  FirstViewController.swift
+//  SimulationViewController.swift
 //  Assignment1
 //
 //  Created by Van Simmons on 1/15/17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FirstViewController: UIViewController {
+class SimulationViewController : UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,5 +21,18 @@ class FirstViewController: UIViewController {
     }
 
 
+}
+
+extension UIView {
+    
+    @IBInspectable var cornerRadius: CGFloat {
+        get {
+            return layer.cornerRadius
+        }
+        set {
+            layer.cornerRadius = newValue
+            layer.masksToBounds = newValue > 0
+        }
+    }
 }
 
