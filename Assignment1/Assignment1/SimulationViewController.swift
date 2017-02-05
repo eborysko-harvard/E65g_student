@@ -19,20 +19,30 @@ class SimulationViewController : UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
-}
-
-extension UIView {
     
-    @IBInspectable var cornerRadius: CGFloat {
-        get {
-            return layer.cornerRadius
+    override func overrideTraitCollection(forChildViewController childViewController: UIViewController) -> UITraitCollection? {
+        
+        print("begin: nothing to override");
+        
+        if UI_USER_INTERFACE_IDIOM() == .pad &&
+            view.bounds.width > view.bounds.height {
+            
+            let collections = [UITraitCollection(horizontalSizeClass: .regular),
+                               UITraitCollection(verticalSizeClass: .compact)]
+            
+            print("Swpping Size Class");
+            
+            return UITraitCollection(traitsFrom: collections)
+            
         }
-        set {
-            layer.cornerRadius = newValue
-            layer.masksToBounds = newValue > 0
-        }
+        
+         print("end: nothing to override");
+        
+        return super.overrideTraitCollection(forChildViewController: childViewController)
     }
+
+
 }
+
+
 
