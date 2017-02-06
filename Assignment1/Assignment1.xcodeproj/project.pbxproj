@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C3C555B11E47E13A00B3A2E2 /* OverrideTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C555B01E47E13A00B3A2E2 /* OverrideTabBarController.swift */; };
 		FBAD2E6B1E2BF8D4008207C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAD2E6A1E2BF8D4008207C0 /* AppDelegate.swift */; };
 		FBAD2E6D1E2BF8D4008207C0 /* SimulationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAD2E6C1E2BF8D4008207C0 /* SimulationViewController.swift */; };
 		FBAD2E6F1E2BF8D4008207C0 /* InstrumentationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAD2E6E1E2BF8D4008207C0 /* InstrumentationViewController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C3C555B01E47E13A00B3A2E2 /* OverrideTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverrideTabBarController.swift; sourceTree = "<group>"; };
 		FBAD2E671E2BF8D4008207C0 /* Assignment1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Assignment1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBAD2E6A1E2BF8D4008207C0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FBAD2E6C1E2BF8D4008207C0 /* SimulationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				FBAD2E6C1E2BF8D4008207C0 /* SimulationViewController.swift */,
 				FBAD2E6E1E2BF8D4008207C0 /* InstrumentationViewController.swift */,
 				FBAD2E701E2BF8D4008207C0 /* Main.storyboard */,
+				C3C555B01E47E13A00B3A2E2 /* OverrideTabBarController.swift */,
 				FBAD2E731E2BF8D4008207C0 /* Assets.xcassets */,
 				FBAD2E751E2BF8D4008207C0 /* LaunchScreen.storyboard */,
 				FBAD2E781E2BF8D4008207C0 /* Info.plist */,
@@ -146,6 +149,7 @@
 			files = (
 				FBAD2E6F1E2BF8D4008207C0 /* InstrumentationViewController.swift in Sources */,
 				FBAD2E6B1E2BF8D4008207C0 /* AppDelegate.swift in Sources */,
+				C3C555B11E47E13A00B3A2E2 /* OverrideTabBarController.swift in Sources */,
 				FBAD2E6D1E2BF8D4008207C0 /* SimulationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
