@@ -453,10 +453,14 @@ extension Grid {
     subscript (row: Int, col: Int) -> Cell? {
         get {
             // ** Your Problem 14 `get` code goes here! replace the following line **
-            return nil
+            guard (0...self.rows ~= row && 0...self.cols ~= col) else { return nil }
+
+            return self.cells[row][col]
         }
         set {
             // ** Your Problem 14 `set` code goes here! replace the following line **
+            guard (0...self.rows ~= row && 0...self.cols ~= col), let cell = newValue else { return }
+            self.cells[row][col] = cell
             return
         }
     }
@@ -470,28 +474,28 @@ extension Grid {
  */
 // Problem 15.1 answer goes here
 /*
- 
+  It is an instance of the Cell struct type.
  */
 /*:
  2. what the type of `self[row,col]`?
  */
 // Problem 15.2 answer goes here
 /*
- 
+   It is an Optional type.
  */
 /*:
  3. why those two types are different?
  */
 // Problem 15.3 comment goes here
 /*
- 
+  Because the subscript impl returns 'Cell?'; thus an Optional.
  */
 /*:
  4. under what circumstances will the `else` clause will be executed?
  */
 // Problem 15.4 comment goes here
 /*
- 
+  If the subscript 'get' return nil because the row or colnms are out of range of the size of the Grid.cells matrix.
  */
 /*:
  ## Problem 16:
@@ -519,7 +523,7 @@ extension Grid {
 
 // Problem 17 comment goes here
 /*
- 
+  $1 is an instance of the Position typealias, resulting from return value of an array of Positions by the neighbors function.
  */
 
 /*:
@@ -544,8 +548,8 @@ extension Grid {
             .reduce(0) {
                 guard let neighborCell = self[$1.row, $1.col] else { return $0 }
                 // ** Problem 18 code goes here!  replace the following 2 lines **
-                neighborCell
-                return $0
+                return (neighborCell.state.isAlive) ? $0 + 1 : $0
+             
         }
     }
 }
@@ -575,7 +579,15 @@ extension Grid {
 extension Grid {
     func nextState(of cell: Cell) -> CellState {
         // ** Problem 19 code goes here! Replace the following line **
-        return .empty
+        switch (cell.state.isAlive, self.livingNeighbors(of: cell)) {
+        case (true, 0...1), (true, 4...8):
+            return .died
+        case (true, 2), (_, 3):
+            return .alive
+        default:
+            return .empty
+        }
+        
     }
 }
 /*:
