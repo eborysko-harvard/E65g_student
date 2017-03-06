@@ -87,6 +87,8 @@ import Foundation
 */
 // ** Your Problem 1 code goes here! replace the following line **
 typealias Position = (row: Int, col: Int)
+
+var test2 = Position(0,0)
 /*:
  ## Problem 2: 
  Using the enum `CellState` defined below:
@@ -126,6 +128,10 @@ struct Cell {
     var position =  (row: 0, col: 0)
     var state = CellState.empty
 }
+
+var test = Cell(position: (0,0), state: CellState.empty)
+var testCell2 = Cell()
+
 /*:
  ## Problem 4:
  I am providing the following function, `map2` immediately below.
@@ -135,7 +141,7 @@ struct Cell {
  */
 // ** Your Problem 4.1 answer goes here **
 /*
-    The _ indicates the paramater lable is not required when calling the function.
+    The _ indicates the paramater label is not required when calling the function.
  */
 /*:
  2. what is the type of the `transform` variable?
@@ -223,19 +229,32 @@ struct Grid {
     ]
     
     // ** Your Problem 6 code goes here! Change the following two lines **
-    var rows: Int = 0
-    var cols: Int = 0
+    var rows: Int = 10
+    var cols: Int = 10
     var cells: [[Cell]] = [[Cell]]()
     
     init(_ rows: Int,
          _ cols: Int,
          cellInitializer: (Int, Int) -> CellState = { _,_ in .empty } ) {
         // ** Your Problem 7 code goes here! **
+        //guard rows >= 0, cols >= 0 else { return }
+        self.rows = rows
+        self.cols = cols
+        for _ in 0..<self.rows { cells.append(Array(repeating: Cell(), count: self.cols)) }
         map2(rows, cols) { row, col in
             // ** Your Problem 8 code goes here! **
+            cells[row][col].position = (row, col)
+            cells[row][col].state = cellInitializer(row, col)
         }
     }
 }
+
+var testGrid = Grid(2,2)
+print(testGrid)
+testGrid = Grid(3,3) { _,_ in CellState.alive }
+print(testGrid)
+
+
 /*:
  The next two problems apply to the extension to `Grid` immediately below.
  
