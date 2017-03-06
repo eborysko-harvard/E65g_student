@@ -129,8 +129,9 @@ struct Cell {
     var state = CellState.empty
 }
 
-var test = Cell(position: (0,0), state: CellState.empty)
-var testCell2 = Cell()
+var testCell = Cell(position: (0,0), state: CellState.empty)
+var testCell2 = Cell(position: (2,2), state: CellState.empty)
+var testCell3 = Cell()
 
 /*:
  ## Problem 4:
@@ -249,10 +250,10 @@ struct Grid {
     }
 }
 
-var testGrid = Grid(2,2)
-print(testGrid)
-testGrid = Grid(3,3) { _,_ in CellState.alive }
-print(testGrid)
+//var testGrid = Grid(2,2)
+//print(testGrid)
+var testGrid = Grid(5,5) { _,_ in CellState.alive }
+//print(testGrid)
 
 
 /*:
@@ -308,10 +309,35 @@ extension Grid {
     func neighbors(of cell: Cell) -> [Position] {
         return Grid.offsets.map {
             // ** Your Problem 9 Code goes here! replace the following line **
-            return Position(row: $0, col: $1)
+            let pR = cell.position.row
+            let pC = cell.position.col
+            var r : Int
+            var c : Int
+           // if ( $0 < 0) {
+              r = (cell.position.row + $0 + self.rows) % self.rows
+           // } else {
+           //   r = self.rows - 1 - 1 + $0
+           /// }
+            if ( $1 <= 0) {
+                c = (cell.position.col + $1 + self.cols) % self.cols
+            } else {
+                c = (self.cols - 1) - (((cell.position.col + $1 + self.cols) % self.cols) + $1)
+            }
+            print("pos= \(pR),\(pC) off= \($0),\($1) res= \(r),\(c)")
+            return Position(row: r , col: c )
         }
     }
 }
+print("\n ")
+var testNeighbors = testGrid.neighbors(of: testCell)
+print("\n NEIGHBORS\n")
+print(testNeighbors)
+print(testCell)
+print("\n ")
+testNeighbors = testGrid.neighbors(of: testCell2)
+print("\n NEIGHBORS\n")
+print(testNeighbors)
+print(testCell2)
 /*:
  ## Problem 11:
  I am providing the following function, reduce2. Answer the following questions
@@ -320,14 +346,14 @@ extension Grid {
  */
 // ** Your Problem 11.1 answer goes here **
 /*
- 
+  Except a function/closure that implment calucaltion logic for the reduce by totaling the values of the colmns in each row.
  */
 /*:
  2. what is the return type of reduce2?
  */
 // ** Your Problem 11.2 answer goes here **
 /*
- 
+  Return type is 'Int'
  */
 /*:
  3. why is there no T parameter here as in map2 above?
@@ -360,7 +386,8 @@ extension Grid {
     var numLiving: Int {
         return reduce2(self.rows, self.cols) { total, row, col in
             // ** Replace the following line with your Problem 12 code
-            return 0
+            return ( cells[row][col].state.isAlive ) ? total + 1 : total
+            
         }
     }
 }
@@ -392,11 +419,11 @@ extension Grid {
 // Code to initialize a 10x10 grid, set up every cell in the grid
 // and randomly turn each cell on or off.  Uncomment following 4 lines
 // and replace `.empty` with your one line of code
-//var grid = Grid(10, 10) { row, col in 
-//   // ** Your Problem 13 code goes here! **
-//   .empty
-//}
-//grid.numLiving
+var grid = Grid(10, 10) { row, col in
+   // ** Your Problem 13 code goes here! **
+    (arc4random_uniform(3) == 2) ? .alive : .empty
+}
+grid.numLiving
 
 // ** Your Problem 13 comment goes here! **
 /*
