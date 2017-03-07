@@ -88,7 +88,6 @@ import Foundation
 // ** Your Problem 1 code goes here! replace the following line **
 typealias Position = (row: Int, col: Int)
 
-var test2 = Position(0,0)
 /*:
  ## Problem 2: 
  Using the enum `CellState` defined below:
@@ -128,10 +127,6 @@ struct Cell {
     var position =  (row: 0, col: 0)
     var state = CellState.empty
 }
-
-var testCell = Cell(position: (0,0), state: CellState.empty)
-var testCell2 = Cell(position: (2,2), state: CellState.empty)
-var testCell3 = Cell()
 
 /*:
  ## Problem 4:
@@ -188,7 +183,7 @@ func map2<T>(_ rows: Int, _ cols: Int, transform: (Int, Int) -> T) -> [[T]] {
 */
 // ** Your Problem 5 comment goes here! **
 /*
- 
+ 'offsets' array represent the abstract position of all the neighbors of a cell within the Grid.
  */
 /*:
  ## Problem 6:
@@ -250,12 +245,6 @@ struct Grid {
     }
 }
 
-//var testGrid = Grid(2,2)
-//print(testGrid)
-var testGrid = Grid(5,5) { _,_ in CellState.alive }
-//print(testGrid)
-
-
 /*:
  The next two problems apply to the extension to `Grid` immediately below.
  
@@ -292,14 +281,14 @@ var testGrid = Grid(5,5) { _,_ in CellState.alive }
  */
 // ** your problem 10.1 answer goes here.
 /*
- 
+   When using the function, 'of' is the label used to identify the input parameter.
  */
 /*:
  2. Explain in one sentence when you would use the word `cell` in relation to this function
  */
 // ** your problem 10.2 answer goes here.
 /*
- 
+   'cell' is the internal label for input parameter, and use it in the internal impl of the function.
  */
 // An extension of Grid to add a function for computing the positions
 // of the 8 neighboring cells of a given cell
@@ -309,35 +298,17 @@ extension Grid {
     func neighbors(of cell: Cell) -> [Position] {
         return Grid.offsets.map {
             // ** Your Problem 9 Code goes here! replace the following line **
-            let pR = cell.position.row
-            let pC = cell.position.col
-            var r : Int
-            var c : Int
-           // if ( $0 < 0) {
-              r = (cell.position.row + $0 + self.rows) % self.rows
-           // } else {
-           //   r = self.rows - 1 - 1 + $0
-           /// }
-            if ( $1 <= 0) {
-                c = (cell.position.col + $1 + self.cols) % self.cols
-            } else {
-                c = (self.cols - 1) - (((cell.position.col + $1 + self.cols) % self.cols) + $1)
-            }
-            print("pos= \(pR),\(pC) off= \($0),\($1) res= \(r),\(c)")
-            return Position(row: r , col: c )
+            let p = (cell.position.row + $0, cell.position.col + $1)
+            switch (cell.position.row + $0, cell.position.col + $1) {
+            case let (x,y) where ( x < 0 && y < 0): return ( self.rows  + x  , self.cols  + y  )
+            case let (x,y) where ( x < 0 ): return (( self.rows - 1 ) - abs(x - y) , (self.cols - 1)  )
+            case let (x,y) where ( y < 0 ): return (( self.rows - 1 ) , (self.cols - 1) - abs(x - y)  )
+            default : return Position( p.0 , p.1 ) }
+    
         }
     }
 }
-print("\n ")
-var testNeighbors = testGrid.neighbors(of: testCell)
-print("\n NEIGHBORS\n")
-print(testNeighbors)
-print(testCell)
-print("\n ")
-testNeighbors = testGrid.neighbors(of: testCell2)
-print("\n NEIGHBORS\n")
-print(testNeighbors)
-print(testCell2)
+
 /*:
  ## Problem 11:
  I am providing the following function, reduce2. Answer the following questions
@@ -360,7 +331,7 @@ print(testCell2)
  */
 // ** Your Problem 11.3 answer goes here **
 /*
- 
+  The func is designed to operate 2D array and return it, has no need to leverage a Generic since the 'combine' closure encapsulate all logic on the array members.
  */
 
 // A function which is useful for counting things in an array of arrays of things
@@ -427,7 +398,7 @@ grid.numLiving
 
 // ** Your Problem 13 comment goes here! **
 /*
- 
+  arc4random_uniform is psuedo random function, so the match the value of '2' should be about a thrid of the time.
  */
 /*:
  ## Problem 14:
@@ -602,7 +573,7 @@ extension Grid {
         var nextGrid = Grid(rows, cols)
         map2(self.rows, self.cols) { (row, col)  in
             // ** Problem 20 code goes here! **
-            nextGrid[row,col]?.state =  nextState(of: self[row,col]!)
+            nextGrid[row-1,col-1]?.state =  nextState(of: self[row-1,col-1]!)
         }
         return nextGrid
     }
@@ -633,23 +604,23 @@ grid.numLiving
  ## For Fun
  Once you have everything above working, uncomment and think about the following lines of code
  */
-//func gliderInitializer(row: Int, col: Int) -> CellState {
-//    switch (row, col) {
-//    case (0, 1), (1, 2), (2, 0), (2, 1), (2, 2): return .alive
-//    default: return .empty
-//    }
-//}
-//
-//grid = Grid(10, 10, cellInitializer: gliderInitializer)
-//grid.numLiving
-//grid = grid.next()
-//grid.numLiving
-//grid = grid.next()
-//grid.numLiving
-//grid = grid.next()
-//grid.numLiving
-//grid = grid.next()
-//grid.numLiving
-//grid = grid.next()
-//grid.numLiving
+func gliderInitializer(row: Int, col: Int) -> CellState {
+    switch (row, col) {
+    case (0, 1), (1, 2), (2, 0), (2, 1), (2, 2): return .alive
+    default: return .empty
+    }
+}
+
+grid = Grid(10, 10, cellInitializer: gliderInitializer)
+grid.numLiving
+grid = grid.next()
+grid.numLiving
+grid = grid.next()
+grid.numLiving
+grid = grid.next()
+grid.numLiving
+grid = grid.next()
+grid.numLiving
+grid = grid.next()
+grid.numLiving
 let theEnd = "The End"
