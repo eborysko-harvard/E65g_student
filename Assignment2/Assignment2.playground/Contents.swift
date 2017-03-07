@@ -137,14 +137,14 @@ struct Cell {
  */
 // ** Your Problem 4.1 answer goes here **
 /*
-    The _ indicates the paramater label is not required when calling the function.
+    The '_' indicates the paramater label is not required to be used when setting the input paramater for a function call.
  */
 /*:
  2. what is the type of the `transform` variable?
  */
 // ** Your Problem 4.2 answer goes here **
 /*
-    The transform variable type is a function.
+    The transform variable type is a function type.
  */
 /*:
  3. what is the return type of `map2`?
@@ -158,7 +158,7 @@ struct Cell {
  */
 // ** Your Problem 4.4 answer goes here **
 /*
-    T is placeholder type for the generic function.
+    T is placeholder type for the generic function declaration.
  */
 // A function which is like the standard map function but
 // which will operate only on a two dimensional array
