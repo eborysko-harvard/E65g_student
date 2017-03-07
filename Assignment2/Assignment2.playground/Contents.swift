@@ -454,7 +454,6 @@ extension Grid {
         get {
             // ** Your Problem 14 `get` code goes here! replace the following line **
             guard (0...self.rows ~= row && 0...self.cols ~= col) else { return nil }
-
             return self.cells[row][col]
         }
         set {
@@ -507,7 +506,7 @@ extension Grid {
 
 // Problem 16 comment goes here
 /*
- 
+  The reduce function gathers count of living neighbors as input to impl the rules for GoL next generation algorythm.
  */
 
 /*:
@@ -600,9 +599,10 @@ extension Grid {
 // An extension to grid to jump to the next state of Conway's GoL
 extension Grid {
     func next() -> Grid {
-        let nextGrid = Grid(rows, cols)
+        var nextGrid = Grid(rows, cols)
         map2(self.rows, self.cols) { (row, col)  in
             // ** Problem 20 code goes here! **
+            nextGrid[row,col]?.state =  nextState(of: self[row,col]!)
         }
         return nextGrid
     }
@@ -617,7 +617,7 @@ extension Grid {
 
 // ** Your Problem 21 comment goes here! **
 /*
- 
+    nextGrid represent the state of next generation in Conway's GoL.
  */
 /*:
  ## Problem 22:
@@ -625,8 +625,9 @@ extension Grid {
  Verify that the number living is still in the neighborhood of 33
  If it is not please debug all your code
  */
-//grid = grid.next()
-//grid.numLiving
+grid.numLiving
+grid = grid.next()
+grid.numLiving
 /*:
  It works!
  ## For Fun
