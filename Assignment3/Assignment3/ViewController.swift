@@ -15,10 +15,24 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
 
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    //* Answer 6 BEGIN
+    @IBOutlet weak var gridView: GridView!
+
+    @IBAction func stepButtonPressed(_ sender: UIButton) {
+        guard let grid = gridView  else{ return }
+        grid.nextGrid()
+        
+    }
+    //* Answer 6 END
+    
+    
 
 
 }

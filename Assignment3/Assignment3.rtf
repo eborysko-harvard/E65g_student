@@ -1,4 +1,4 @@
-{\rtf1\ansi\ansicpg1252\cocoartf1504\cocoasubrtf810
+{\rtf1\ansi\ansicpg1252\cocoartf1504\cocoasubrtf760
 {\fonttbl\f0\fnil\fcharset0 Verdana;}
 {\colortbl;\red255\green255\blue255;\red34\green45\blue53;\red15\green120\blue219;}
 {\*\expandedcolortbl;;\cssrgb\c17647\c23137\c27059;\cssrgb\c0\c55686\c88627;}
@@ -55,57 +55,56 @@ https://developer.apple.com/videos/play/wwdc2015/408/\
 \b0 \
 1. Using the CellState enum provided in the template\'a0(Grid.swift) make the following additions\'a0(10 points)\
 \pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
-\ls1\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	\'95	}\expnd0\expndtw0\kerning0
-Give the enum a raw type of String\'a0\
-\ls1\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\'95	}\expnd0\expndtw0\kerning0
-Assign the name of the case as the String value for each case\'a0\
-\ls1\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\'95	}\expnd0\expndtw0\kerning0
-equip the enum with a description method which uses a switch statement to hand back the raw value\
-\ls1\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\'95	}\expnd0\expndtw0\kerning0
-equip the enum with an allValues method which returns an array of all available values for the enum\
-\ls1\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\'95	}\expnd0\expndtw0\kerning0
-equip the enum with a method toggle(value:CellState)-> CellState which when passed .empty or .died, returns .alive, when passed .alive or .born returns .empty\
+\ls1\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	\'95	}\cf0 \strike \strikec0 Give the enum a raw type of String\cf2 \expnd0\expndtw0\kerning0
+\strike0\striked0 \'a0\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\'95	}\cf0 \strike \strikec0 Assign the name of the case as the String value for each case\cf2 \expnd0\expndtw0\kerning0
+\strike0\striked0 \'a0\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\'95	}\cf0 \strike \strikec0 equip the enum with a description method which uses a switch statement to hand back the raw value\cf2 \expnd0\expndtw0\kerning0
+\strike0\striked0 \
+\ls1\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\'95	}\cf0 \strike \strikec0 equip the enum with an allValues method which returns an array of all available values for the enum\cf2 \expnd0\expndtw0\kerning0
+\strike0\striked0 \
+\ls1\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\'95	}\cf0 \strike \strikec0 equip the enum with a method toggle(value:CellState)-> CellState which when passed .empty or .died, returns .alive, when passed .alive or .born returns .empty\cf2 \expnd0\expndtw0\kerning0
+\strike0\striked0 \
 \pard\pardeftab720\partightenfactor0
 \cf2 \
 2. Create a subclass of UIVIew called GridView which has the following characteristics (5 points):\
 \pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
-\ls2\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	\'95	}\expnd0\expndtw0\kerning0
-Is IBDesignable\
+\ls2\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	\'95	}\cf0 \strike \strikec0 Is IBDesignable\cf2 \expnd0\expndtw0\kerning0
+\strike0\striked0 \
 \ls2\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\'95	}\expnd0\expndtw0\kerning0
 Has the following IBInspectable Properties:\
 \pard\tx940\tx1440\pardeftab720\li1440\fi-1440\partightenfactor0
-\ls2\ilvl1\cf2 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
-1\'a0Integer: size\'a0(defaulting to 20)\
-\ls2\ilvl1\kerning1\expnd0\expndtw0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
-4 UIColors: livingColor, emptyColor, bornColor, diedColor, gridColor (pick defaults)\
-\ls2\ilvl1\kerning1\expnd0\expndtw0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
-CGFloat\'a0 gridWidth\
+\ls2\ilvl1\cf2 \kerning1\expnd0\expndtw0 {\listtext	\cf0 \strike \strikec0 \uc0\u9702 	}1\'a0Integer: size\'a0(defaulting to 20)\
+{\listtext	\uc0\u9702 	}4 UIColors: livingColor, emptyColor, bornColor, diedColor, gridColor (pick defaults)\
+{\listtext	\uc0\u9702 	}CGFloat\'a0 gridWidth\cf2 \expnd0\expndtw0\kerning0
+\strike0\striked0 \
 \pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
 \ls2\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	\'95	}\expnd0\expndtw0\kerning0
 Has the following normal characteristic:\
 \pard\tx940\tx1440\pardeftab720\li1440\fi-1440\partightenfactor0
-\ls2\ilvl1\cf2 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
-a struct of type Grid drawn from the Grid.swift file which is provided in the Assignment3 template and which is reinitialized to all .empty values with rows = size and cols = size every time that Inspectable\'a0size\'a0property changes\
+\ls2\ilvl1\cf2 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u9702 	}\cf0 \strike \strikec0 a struct of type Grid drawn from the Grid.swift file which is provided in the Assignment3 template and which is reinitialized to all .empty values with rows = size and cols = size every time that Inspectable\'a0size\'a0property changes\cf2 \expnd0\expndtw0\kerning0
+\strike0\striked0 \
 \pard\pardeftab720\partightenfactor0
 \cf2 \
 3. Instantiate a GridView in the Main.storyboard of Assignment3 and (5 points)\
 \pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
-\ls3\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	\'95	}\expnd0\expndtw0\kerning0
-Assign the following values for all of the above properties in the storyboard\
-\ls3\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\'95	}\expnd0\expndtw0\kerning0
-Use these values: size: 20, livingColor = some green, bornColor = same shade of green with .6 alpha,\'a0 emptyColor = darkGray, diedColor = same shade of grey\'a0 with\'a0 .6 alpha, gridColor = black, gridWidth = 2.0\
+\ls3\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	\'95	}\cf0 \strike \strikec0 Assign the following values for all of the above properties in the storyboard\
+{\listtext	\'95	}Use these values: size: 20, livingColor = some green, bornColor = same shade of green with .6 alpha,\'a0 emptyColor = darkGray, diedColor = same shade of grey\'a0 with\'a0 .6 alpha, gridColor = black, gridWidth = 2.0\cf2 \expnd0\expndtw0\kerning0
+\strike0\striked0 \
 \pard\pardeftab720\partightenfactor0
 \cf2 \
 4. implement a drawRect: method for GridView which: (40 points)\
 \pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
-\ls4\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	\'95	}\expnd0\expndtw0\kerning0
-draws the correct set of grid lines in the view using the techniques shown in class. \'a0Set the gridlines to have width as specified in the gridWidth property and color as in gridColor\
-\ls4\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\'95	}\expnd0\expndtw0\kerning0
-draws a circle inside of every grid cell and fills the circle with the appropriate color for the grid cell drawn from the Grid struct discussed in Problem 2. \'a0e.g. for grid cell (0,0) fetch the zero'th array from grid and then fetch the CellState value from the zero'th position of the array and color the circle using the color specified in IB. Repeat for the other values\
+\ls4\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	\'95	}\cf0 \strike \strikec0 draws the correct set of grid lines in the view using the techniques shown in class. \'a0Set the gridlines to have width as specified in the gridWidth property and color as in gridColor\cf2 \expnd0\expndtw0\kerning0
+\strike0\striked0 \
+\ls4\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\'95	}\cf0 \strike \strikec0 draws a circle inside of every grid cell and fills the circle with the appropriate color for the grid cell drawn from the Grid struct discussed in Problem 2. \'a0e.g. for grid cell (0,0) fetch the zero'th array from grid and then fetch the CellState value from the zero'th position of the array and color the circle using the color specified in IB. Repeat for the other values\cf2 \expnd0\expndtw0\kerning0
+\strike0\striked0 \
 \pard\pardeftab720\partightenfactor0
 \cf2 \
-5. Using touch handling techniques shown in class\'a0 and\'a0 the toggle method of CellState, toggle the value of a\'a0 touched cell from Empty to Living or from Living to Empty depending the current state of the cell and cause a redisplay to happen (20 points)\
+5. \cf0 \kerning1\expnd0\expndtw0 \strike \strikec0 Using touch handling techniques shown in class\'a0 and\'a0 the toggle method of CellState, toggle the value of a\'a0 touched cell from Empty to Living or from Living to Empty depending the current state of the cell and cause a redisplay to happen (20 points)\cf2 \expnd0\expndtw0\kerning0
+\strike0\striked0 \
 \
-6. Add a button labeled: "Step"\'a0which will iterate the grid when pressed using your modified version of Grid \'a0(20 points)\
+6. \cf0 \kerning1\expnd0\expndtw0 \strike \strikec0 Add a button labeled: "Step"\'a0which will iterate the grid when pressed using your modified version of Grid \'a0(20 points)\cf2 \expnd0\expndtw0\kerning0
+\strike0\striked0 \
 When you have completed the assignment, please commit your changes and create a tag titled "assignment-3-submit". Push your commits and the tag to your GitHub repository.\
 }
