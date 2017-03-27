@@ -33,7 +33,6 @@ import UIKit
         grid  = Grid(size, size)
         // Used for seeding tests : Q3-5
         //grid  = Grid(size, size) { _,_ in arc4random_uniform(3) == 2 ? .alive : .empty }
-        //print ("Grid Init: \(grid.living.count)\n\n\(grid.description)\n\n\n\n\n\n")
     }
     
     //* Answer 4 BEGIN
@@ -72,28 +71,29 @@ import UIKit
         
         (0 ... self.size).forEach { i in
             (0 ... self.size).forEach { j in
-                 let origin = CGPoint(
-                     x: base.x + (CGFloat(j) * size.width) + 1,
-                     y: base.y + (CGFloat(i) * size.height) + 1
+                
+                let origin = CGPoint(
+                     x: base.x + (CGFloat(j) * size.width) + 1.5,
+                     y: base.y + (CGFloat(i) * size.height) + 1.5
                  )
+                
                  let subRect = CGRect(
                      origin: origin,
                      size: CGSize(
-                        width: size.width - 2,
-                        height: size.height - 2
+                        width: size.width - 3,
+                        height: size.height - 3
                     )
                  )
-                if grid[Position(i,j)].isAlive {
-                    let path = UIBezierPath(ovalIn: subRect)
-                    switch grid[Position(i,j)] {
-                    case .alive :  livingColor.setFill()
-                    case .empty :  emptyColor.setFill()
-                    case .born :   bornColor.setFill()
-                    case .died :   diedColor.setFill()
-                    }
-                    path.fill()
-                
+
+                let path = UIBezierPath(ovalIn: subRect)
+                switch grid[Position(i,j)] {
+                case .alive :  livingColor.setFill()
+                case .empty :  emptyColor.setFill()
+                case .born :   bornColor.setFill()
+                case .died :   diedColor.setFill()
                 }
+                path.fill()
+                
             }
         }
 
@@ -154,10 +154,13 @@ import UIKit
     }
     //* Answer 5 END
     
+    //* Answer 6 BEGIN
     func nextGrid() -> Void {
         grid = grid.next()
+        print ("Grid Status: \(grid.living.count)\n\n\(grid.description)\n\n\n\n\n\n")
         setNeedsDisplay()
     }
+    //* Answer 6 END
     
     
     override init(frame : CGRect) {
